@@ -3,6 +3,7 @@ import Navbar from '../components/common/Navbar'
 import Hero from '../components/landingComponents/Hero'
 import Feature from '../components/landingComponents/feature'
 import FamousTrips from '../components/landingComponents/FamousTrips'
+import OurMission from '../components/landingComponents/OurMission'
 
 const Landing  = () => {
   return (
@@ -11,6 +12,7 @@ const Landing  = () => {
       <Hero/>
       <Feature/>
       <FamousTrips/>
+      <OurMission/>
     </div>
   )
 }
