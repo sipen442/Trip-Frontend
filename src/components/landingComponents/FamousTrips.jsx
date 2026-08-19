@@ -44,8 +44,8 @@ const FamousTrips = () => {
             {
                tripsData.map((feature, index)=>{
                 return(
-                    <div key={index} onClick={()=>{navigate("/feature.link")}} className='border rounded p-4 border-green-600 bg-yellow-950 text-white grid grid-cols-1 md:bg-amber-300 lg:bg-gray-700 '>
-                      <div className='w-full h-40 overflow-hidden '>
+                    <div key={index} onClick={()=>{navigate("/feature.link")}} className='border rounded p-4 border-green-600 bg-yellow-950 text-white grid grid-cols-1 md:bg-amber-300 lg:bg-gray-700 inset-shadow-sm inset-shadow-blue-700  '>
+                      <div className='w-full h-40  overflow-hidde '>  
                       <img className='w-full' src={feature.Image} alt={feature.title}/>
                       </div>
                         

@@ -21,13 +21,13 @@ justify-center text-white'>
     <h1 className='text-5xl font-bold text-white'>
         plan your trip with wanderwise
         </h1>
-    <p className='text-white mt-6 text-2xl leading-7'>
+    <p className='text-white mt-12 text-2xl leading-9 '>
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
          Iusto dolorum magni blanditiis non similique commodi laborum beatae eligendi. 
         Consectetur ut atque, dolor sint quos aliquid in molestias. 
         Perspiciatis, culpa ut?
     </p>
-    <div className=''>
+    <div className='space-x-7 mt-12' >
     <CustomButton text="Get started"/>
     <CustomButton text="learn more"/>
     </div>

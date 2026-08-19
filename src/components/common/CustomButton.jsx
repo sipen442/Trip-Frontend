@@ -8,7 +8,7 @@ const CustomButton = ({text,className,link}) => {
      <button onClick={()=>{
       navigate(link)
 
-     }} className={`bg-blue-700 text-white py-2 px-6 border-2 
+     }} className={`ring ring-blue-400 shadow-lg shadow-blue-400 bg-blue-600 text-white py-2 px-6 border-2 
         hover:bg-black 2xl  rounded-lg ${className}`}> {text}</button>
   )
 }

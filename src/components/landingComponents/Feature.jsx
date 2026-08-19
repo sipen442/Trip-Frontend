@@ -32,7 +32,7 @@ const featuresData =[
 const Feature = () => {
     const navigate = useNavigate();
   return (
-    <div className='px-20 py-24 bg-gray-900'>
+    <div className='px-20 py-24 bg-gray-900 '>
         {/* heading */}
         <div  >
             <h2 onClick={()=>{navigate("/features")}} className='text-4xl m-15 font-bold text-center text-white'>Features</h2>
@@ -43,8 +43,7 @@ const Feature = () => {
             {
                featuresData.map((feature, index)=>{
                 return(
-                    <div key={index} onClick={()=>{navigate("/feature.link")}} className='border rounded text-white p-4 border-green-600 '>
-
+                    <div key={index} onClick={()=>{navigate("/feature.link")}} className='border rounded text-white p-4 border-green-600 inset-shadow-2xs inset-shadow-blue-700'>
                        <feature.icon size={49} className='text-blue-900 mx-auto mb-4'/>
                        <h3 className='text-xl fond-bold-4'>{feature.title}</h3>
                        <p>{feature.content}</p>
