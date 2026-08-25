@@ -4,6 +4,8 @@ import Landing from './pages/Landing '
 import About from './pages/About'
 import Contact from './pages/contact'
 import Hero from './components/landingComponents/Hero'
+import Login from './pages/Login'
+import Register from './pages/register'
 
 const  App = () => {
   return (
@@ -13,6 +15,8 @@ const  App = () => {
 <Route path="/About" element={<About />}/>
 <Route path="/Contact" element={<Contact/>}/>
 <Route path="/Hero" element={<Hero/>}/>
+<Route path='/Login' element={<Login/>}/>
+<Route path='/Register' element={<Register/>}/>
 
 
     </Routes>
