@@ -1,32 +1,99 @@
 import React from 'react'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../components/ui/card'
+import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../components/ui/card'
 import { Label } from '../components/ui/label'
 import { Input } from '../components/ui/input'
 import { Button } from '../components/ui/button'
+import *as z from 'zod'
+import { Controller,  useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Field, FieldError, FieldLabel } from '../components/ui/field'
+
+
+const formSchema = z.object({
+email:z.string().email().min(8,"email is to short ").trim(),
+password:z.string().min(8,"password must be at least 8 characters").trim(),
+})
 
 const Login = () => {
+const form=useForm({
+  resolver:zodResolver(formSchema),
+  defaultValues:{
+    email:"",
+    password:"",
+  },
+})
+
+const onSubmit=(data)=>{
+  console.log(data);
+}
+
   return (
-    <div>
-       <Card className={"w-1/4 mx-auto mt-30"}>
-       <CardHeader className={"border-b-3"}>
-        <CardTitle>Login to Wanderwise </CardTitle>
-        <CardDescription>Enter your credentials to access your account.</CardDescription>
-       </CardHeader>
-       <CardContent className={"space-y-4"}>
-        <div>
-          <Label className={"mb-2"}>Enter your email</Label>
-          <Input type={"email"} placeholder="abc@ mail.com"/>
-        </div>
-        <div>
-          <Label className={"mb-2"}>Enter your password</Label>
-          <Input type={"password"} placeholder="******"/>
-        </div>
-       </CardContent>
-       <CardFooter>
-        <Button className={"w-full"}>Login</Button>
-       </CardFooter>
-       </Card>
+      <div className='w-full h-dvh pt-30 bg-emerald-900'>
+        <div className='w-1/2 mx-auto bg-white  rounded-lg grid grid-cols-2 h-60dvh'>
+    <div className='w-full overflow-hidden'>
+<img src="https://plus.unsplash.com/premium_photo-1677343210638-5d3ce6ddbf85?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="wanderwise login page" />
     </div>
+    <div>
+      <form  className="h-full"onSubmit={form.handleSubmit(onSubmit)}>
+      <Card className={"h-full mx-auto flex flex-col justify-evenly border-0"}>
+        <CardHeader>
+          <CardTitle>Login to wanderwise</CardTitle>
+          <CardDescription>Enter your email and password to continue .</CardDescription>
+          <CardAction>
+            <img src="/wanderwiseLogo.png" alt="wanderwise logo" className='w-12' />
+          </CardAction>
+           </CardHeader>
+          <CardContent className={"space-y-4"}>
+           
+            <Controller
+  name="email"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field data-invalid={fieldState.invalid}>
+      <FieldLabel htmlFor={field.name}>Enter your email</FieldLabel>
+      <Input
+        {...field}
+        id={field.name}
+        type="email"
+        placeholder="abc@gmail.com"
+        aria-invalid={fieldState.invalid}
+      />
+      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+    </Field>
+  )}
+  /> 
+  <Controller
+    
+  name="password"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field data-invalid={fieldState.invalid}>
+      <FieldLabel htmlFor={field.name}>Enter your password</FieldLabel>
+      <Input
+        {...field}
+        id={field.name}
+        type="Password"
+        placeholder="********"
+        aria-invalid={fieldState.invalid}
+      />
+      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+    </Field>
+  )}
+  />
+            
+   
+          </CardContent>
+          <CardFooter>
+            <Button className={"w-full"} type="submit">Login</Button>
+          </CardFooter>
+       
+        </Card>
+
+      
+     </form>
+    </div>
+    </div>
+   </div> 
   )
 }
 
