@@ -6,6 +6,8 @@ import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader,
 import { Field, FieldError, FieldLabel } from '../components/ui/field';
 import { Input } from '../components/ui/input';
 import { Button } from '../components/ui/button';
+import api from '../api/axious';
+import { toast } from 'sonner';
 
 const formSchema= z.object({
     name:z.string().min(5,"Name must be at list 5 characters").trim(),
@@ -30,8 +32,26 @@ const Register = () => {
     },
   })
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+// destructuring :confirmpassword is removed from the group,and name email password is grouped;
+    const {confirmPassword, ...newData } = data;
+
+// always use tyr catch block while sending data in the backend;
+//inside post(end point ,data-you want to send);
+
+    try {
+      const response = await api.post("/auth/register",newData);
+      if(response.status ===201){
+        toast.success("Account created successfully");
+      }else{
+        toast.error(response.message || "Registration failed")
+      }
+      
+    } catch (error) {
+      toast.error(error.message || "some error occured");
+      console.log(error.message);
+    }
   }
   return (
      <form onSubmit={form.handleSubmit(onSubmit)}>

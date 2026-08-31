@@ -7,6 +7,8 @@ import *as z from 'zod'
 import { Controller,  useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Field, FieldError, FieldLabel } from '../components/ui/field'
+import { toast } from 'sonner'
+import api from '../api/axious'
 
 
 const formSchema = z.object({
@@ -23,8 +25,19 @@ const form=useForm({
   },
 })
 
-const onSubmit=(data)=>{
+const onSubmit=async (data)=>{
   console.log(data);
+  try {
+     const response = await api.post("/auth/register",data);
+      if(response.status ===201){
+        toast.success("Account created successfully");
+      }else{
+        toast.error(response.message || "Registration failed")
+      }
+  } catch (error) {
+     toast.error(error.message || "some error occured");
+      console.log(error.message);
+  }
 }
 
   return (
