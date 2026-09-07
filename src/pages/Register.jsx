@@ -6,8 +6,9 @@ import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader,
 import { Field, FieldError, FieldLabel } from '../components/ui/field';
 import { Input } from '../components/ui/input';
 import { Button } from '../components/ui/button';
-import api from '../api/axious';
+import api from '../api/axios';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 const formSchema= z.object({
     name:z.string().min(5,"Name must be at list 5 characters").trim(),
@@ -21,6 +22,7 @@ const formSchema= z.object({
 });
 
 const Register = () => {
+  const navigate = useNavigate();
 
      const form = useForm({
     resolver: zodResolver(formSchema),
@@ -44,6 +46,7 @@ const Register = () => {
       const response = await api.post("/auth/register",newData);
       if(response.status ===201){
         toast.success("Account created successfully");
+        navigate("/Login")
       }else{
         toast.error(response.message || "Registration failed")
       }

@@ -13,13 +13,13 @@ const onLogin = (jwtToken,user)=>{
 
    localStorage.setItem("token",jwtToken);
 }
-onLogout = ()=>{
+const onLogout = ()=>{
 setToken(null);
 setUserData(null);
  localStorage.setItem(null);
 }
 return (
-    <AuthContext.Provider values={{token,userData,onLogin,onLogout}}>
+    <AuthContext.Provider value={{token,userData,onLogin,onLogout}}>
         {children}
 
     </AuthContext.Provider>

@@ -1,10 +1,10 @@
-import axious from "axious";
+import axios from "axios";
 
 
-const baseUrl =process.env.VITE_API_BASE_URL;
+const baseUrl =import.meta.env.VITE_API_BASE_URL;
 
-const api = axious.create({
-    baseURL:baseaUrl
+const api = axios.create({
+    baseURL:baseUrl
 })
 api.interceptors.request.use((config)=>{
 const token = localStorage.getItem("token");

@@ -8,7 +8,9 @@ import { Controller,  useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Field, FieldError, FieldLabel } from '../components/ui/field'
 import { toast } from 'sonner'
-import api from '../api/axious'
+import api from '../api/axios'
+import { useNavigate } from 'react-router-dom'
+import useAuth from '../hooks/useAuth'
 
 
 const formSchema = z.object({
@@ -17,6 +19,8 @@ password:z.string().min(8,"password must be at least 8 characters").trim(),
 })
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { onLogin } = useAuth();
 const form=useForm({
   resolver:zodResolver(formSchema),
   defaultValues:{
@@ -28,11 +32,13 @@ const form=useForm({
 const onSubmit=async (data)=>{
   console.log(data);
   try {
-     const response = await api.post("/auth/register",data);
-      if(response.status ===201){
+     const response = await api.post("/auth/login",data);
+      if(response.status ===200){
         toast.success("Account created successfully");
+        onLogin(response.data.token,data);
+        navigate("/dashboard");
       }else{
-        toast.error(response.message || "Registration failed")
+        toast.error(response.message || "login failed")
       }
   } catch (error) {
      toast.error(error.message || "some error occured");
