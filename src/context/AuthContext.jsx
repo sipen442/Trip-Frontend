@@ -16,7 +16,7 @@ const onLogin = (jwtToken,user)=>{
 const onLogout = ()=>{
 setToken(null);
 setUserData(null);
- localStorage.setItem(null);
+ localStorage.removeItem("token");
 }
 return (
     <AuthContext.Provider value={{token,userData,onLogin,onLogout}}>

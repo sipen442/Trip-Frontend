@@ -1,5 +1,6 @@
 import React from 'react'
 import useAuth from '../../hooks/useAuth'
+import CustomButton from './CustomButton';
 
 const AppNavbar = () => {
     const {onLogout} = useAuth();
