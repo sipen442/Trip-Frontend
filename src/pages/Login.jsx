@@ -34,7 +34,7 @@ const onSubmit=async (data)=>{
   try {
      const response = await api.post("/auth/login",data);
       if(response.status ===200){
-        toast.success("Account created successfully");
+        toast.success("Account logined successfully");
         await onLogin(response.data.token,data);
         navigate("/dashboard");
       }else{

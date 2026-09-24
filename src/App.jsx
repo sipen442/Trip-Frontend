@@ -11,9 +11,12 @@ import { jwtDecode } from 'jwt-decode'
 import Dashboard from './pages/Dashboard'
 import AppLayout from './Layouts/AppLayout'
 import { AddTrip } from './pages/trips/AddTrip'
-import { TripDetails } from './pages/trips/TripDetails'
+import  TripDetails from './pages/trips/TripDetails'
 import { Trip } from './pages/trips/Trip'
 import EditTrip from './pages/trips/EditTrip'
+import Baggage from './pages/baggage/Baggage'
+import BaggageDetails from './pages/baggage/BaggageDetails'
+import AcceptInvitation from './pages/AcceptInvitation'
 
 
 const App = () => {
@@ -64,6 +67,10 @@ const App = () => {
             <Route path='/trips/Add' element={<AddTrip/>} />
             <Route path='/trips/:id' element={<TripDetails/>} />
             <Route path='/trips/edit/:id' element={<EditTrip/>} />
+            <Route path='/baggage' element={<Baggage/>} />
+            <Route path='/baggage/:id' element={<BaggageDetails/>} />
+
+          <Route path="/trips/:id/invite/accept" element={<AcceptInvitation/>} />
 
           </Route>
 

@@ -31,16 +31,16 @@ const formSchema = z.object({
   path: ["startDate"]
 })
 
-const TripForm = () => {
+const TripForm = ({tripDetails}) => {
 
   const navigate = useNavigate();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
-    defaultValues: {
+    defaultValues: tripDetails ||{
       title: "",
       description: "",
-      startDate: new Date().toISOString().split('t')[0],
+      startDate: new Date().toISOString().split('T')[0],
       endDate:new Date().toISOString().split('T')[0],
       destinations:[''],
       budget:{
@@ -74,14 +74,33 @@ const TripForm = () => {
       console.log(error);
     }
   }
+  const onEdit = async(data) => {
+    console.log(data);
+    try {
+      const response = await api.patch(`/trips/${tripDetails._id}`,data);
+
+      if(response.status ===200){
+        toast.success("trip created successfully");
+        navigate("/trips");
+      }else{
+        toast.error("Error updating trip.")
+        console.log(response);
+      }
+    } catch (error) {
+      toast.error(error.message||"Error updatin trip");
+      console.log(error);
+    }
+  }
+
+  
 
   return (
     
-    <form onSubmit={form.handleSubmit(onSubmit)}>
+    <form onSubmit={form.handleSubmit(tripDetails? onEdit : onSubmit)}>
 
     <Card className={"w-2/4 max-auto"}>
         <CardHeader>
-            <CardTitle>Add your Trip</CardTitle>
+            <CardTitle>{tripDetails ? "Edit":"Add"} your Trip</CardTitle>
             <CardDescription>Fill out the details of your next trip</CardDescription>
         </CardHeader>
         <CardContent className={"space-y-4"}>
