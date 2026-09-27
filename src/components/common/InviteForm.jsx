@@ -5,6 +5,7 @@ import * as z from 'zod'
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../components/ui/card'
 import { Field, FieldLabel } from '../ui/field'
 import { Button } from '../ui/button'
+import { Input } from '../ui/input'
 
  
 
@@ -50,7 +51,7 @@ const InviteForm = ({trip}) => {
             <CardTitle>Add Expenses</CardTitle>
             <CardDescription>Enter name and amount of the expenses</CardDescription>
             <CardAction>
-                <Button type ="button" onclick={()=>{append("")}}>Add email</Button>
+                <Button type ="button" onClick={()=>{append("")}}>Add email</Button>
             </CardAction>
         </cardheader>
         <CardContent>
