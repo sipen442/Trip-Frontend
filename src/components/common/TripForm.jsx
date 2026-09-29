@@ -96,9 +96,9 @@ const TripForm = ({tripDetails}) => {
 
   return (
     
-    <form onSubmit={form.handleSubmit(tripDetails? onEdit : onSubmit)}>
+    <form  className="px-4 py-8 lg:py-20" onSubmit={form.handleSubmit(tripDetails? onEdit : onSubmit)}>
 
-    <Card className={"w-2/4 max-auto"}>
+    <Card className={" w-full lg:w-2/4 max-auto"}>
         <CardHeader>
             <CardTitle>{tripDetails ? "Edit":"Add"} your Trip</CardTitle>
             <CardDescription>Fill out the details of your next trip</CardDescription>
@@ -242,7 +242,7 @@ const TripForm = ({tripDetails}) => {
     })
     }
         </CardContent>
-        <CardFooter>
+        <CardFooter className={"flex justify-center"}>
           <Button type='submit'>submit</Button>
         </CardFooter>
     </Card>

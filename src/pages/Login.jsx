@@ -48,8 +48,8 @@ const onSubmit=async (data)=>{
 
   return (
       <div className='w-full h-dvh pt-30 bg-emerald-900'>
-        <div className='w-1/2 mx-auto bg-white  rounded-lg grid grid-cols-2 h-60dvh'>
-    <div className='w-full overflow-hidden'>
+        <div className=' w-full lg:w-1/2 mx-auto bg-white  rounded-lg grid grid-cols-1 lg:grid-cols-2 h-60dvh'>
+    <div className='w-full overflow-hidden hidden lg:block'>
 <img src="https://plus.unsplash.com/premium_photo-1677343210638-5d3ce6ddbf85?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="wanderwise login page" />
     </div>
     <div>

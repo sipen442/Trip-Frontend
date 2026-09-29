@@ -33,7 +33,7 @@ const  tripsData =[
 const FamousTrips = () => {
     const navigate = useNavigate();
   return (
-    <div className='px-20 py-24  bg-gray-900'>
+    <div className='px-4 md:px-8 lg:px-24 py-24  bg-gray-900'>
         {/* heading */}
         <div  >
             <h2  className='text-4xl m-15 font-bold text-center text-white'>Famous Trips</h2>
